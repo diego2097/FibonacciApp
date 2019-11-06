@@ -1,6 +1,7 @@
 # Escalamiento en Azure con Maquinas Virtuales, Sacale Sets y Service Plans
 
 
+
 ## Tiempos de respuesta 
 
 ### 1000000
@@ -49,3 +50,6 @@
 ![Imágen 11](img/consumo_cpu.PNG)
 
 
+# Autores 
+- Luis Fernando Pizza Gamba https://github.com/luis572
+- Diego Alejandro Corredor Tolosa https://github.com/diego2097
