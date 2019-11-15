@@ -1,5 +1,7 @@
 # Escalamiento en Azure con Maquinas Virtuales, Sacale Sets y Service Plans
 
+# Primera parte 
+
 ## 1. ¿Cuántos y cuáles recursos crea Azure junto con la VM?
 
 Cuando se crea una maquina una virtual en azure, se crean en total 7 recursos incluyendo la maquina virtual. los cuales son: 
@@ -137,7 +139,6 @@ evitando el gasto de procesamiento pero la eficiencia depende de la aplicacion e
 ## 11. Aumente la cantidad de ejecuciones paralelas del comando de postman a 4. ¿El comportamiento del sistema es porcentualmente mejor?
 
 El porcentaje porcentual de la CPU se mantiene como se puede ver a continuacion, primero se realizo el comando con 4 ejecuciones y despues con 2 ejecuciones. 
-
 
 ![Imágen 1](porcentual.PNG)
 
