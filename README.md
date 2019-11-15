@@ -140,7 +140,7 @@ evitando el gasto de procesamiento pero la eficiencia depende de la aplicacion e
 
 El porcentaje porcentual de la CPU se mantiene como se puede ver a continuacion, primero se realizo el comando con 4 ejecuciones y despues con 2 ejecuciones. 
 
-![Imágen 1](porcentual.PNG)
+![Imágen 1](img/porcentual.PNG)
 
 # Autores 
 - Diego Alejandro Corredor Tolosa https://github.com/diego2097
