@@ -142,10 +142,6 @@ El porcentaje porcentual de la CPU se mantiene como se puede ver a continuacion,
 
 ![Imágen 1](img/porcentual.PNG)
 
-# Autores 
-- Diego Alejandro Corredor Tolosa https://github.com/diego2097
-
-
 
 # Parte 2 - Escalabilidad horizontal
 
@@ -259,7 +255,8 @@ Un grupo de seguridad de red contiene reglas de seguridad que permiten o deniega
 varios tipos de recursos de Azure.
 
 
-
+# Autores 
+- Diego Alejandro Corredor Tolosa https://github.com/diego2097
 
 
 
