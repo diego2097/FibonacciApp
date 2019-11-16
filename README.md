@@ -144,3 +144,127 @@ El porcentaje porcentual de la CPU se mantiene como se puede ver a continuacion,
 
 # Autores 
 - Diego Alejandro Corredor Tolosa https://github.com/diego2097
+
+
+
+# Parte 2 - Escalabilidad horizontal
+
+## Pruebas con newman 
+
+### Tiempos de respuesta 
+
+El tiempo maximo fue de 35.8 segundos, los demas tiempos estuvieron entre los 18 y 19 segundos esto implica una gran mejora ya que con la escalibilidad vertical
+de la parte 1, el tiempo maximo fue de 56.3 segundos, mientras que las demas iteraciones que no fallaron, tuvieron un tiempo de 28 segundos. 
+
+![Imágen 1](img/Tiempo.PNG)
+
+### peticiones exitosas 
+
+El numero de peticiones exitosas fue el mismo que en la escabilidad vertical, 5 peticiones. 
+
+## ¿Cuáles son los tipos de balanceadores de carga en Azure y en qué se diferencian?, 
+
+
+### Balanceador de carga privado o interno 
+
+Este balanceador consta de una IP virtual interna, esto quiere decir que no esta en la capacidad de balancear el trafico proveniente desde internet 
+hacia los endpoints internos. Implementa el balanceo de cargas solo para las maquinas virtuales conectadas a una misma red virtual.  
+
+### Balanceador de carga publico 
+
+Este balanceador de carga recibe peticiones de todo el interet hacia los recursos internos, y se encarga de administrar las cargas y trafico entrante.  
+
+## ¿Qué es SKU, qué tipos hay y en qué se diferencian?
+
+El SKU representa para una empresa la unidad mínima de un producto que puede ser vendida, comprada, o gestionada al inventario. 
+Aplicada a la distribución o producción, el SKU se puede utilizar para seguir transacciones y movimientos de inventario, analizar 
+patrones de compra-venta, seguimiento de precios y fluctuaciones en el inventario.
+
+Existen dos tipos de sku para los balanceadores de carga, el sku estandar y el sku basico. Ambos comparten la misma API Y la misma estructura 
+pero se diferencian en caracteristicas como la escala, precio, numero de instancias, protocolos que aceptan, zonas de disponibilidad, ofreciendo el 
+sku estandar unas caracteristicas para un uso mas complejo o de mayor exigencia.  
+
+
+## ¿Por qué el balanceador de carga necesita una IP pública?
+
+Porque Internet se debe comunicar con el balanceador de carga y no directamente con cada maquina dependiente del balanceador, 
+por lo tanto se necesita una IP publica para que esta comunicacion se pueda llevar a cabo. 
+
+
+## ¿Cuál es el propósito del Backend Pool?
+
+Es donde las maquinas virtuales son alojadas, dependiendo el sku que se elija esta zona tiene cierta capacidad, para el sku basico el back-end pool tiene 
+una capacidad de 100 instancias(una instancia es una maquina virtual) mientras que el sku estandar cuenta con una capacidad de 1000 instancias. El proposito 
+del backend pool es el de alojar las maquinas que seran dependendientes del balanceador de carga. 
+
+## ¿Cuál es el propósito del Health Probe?
+
+Se encarga de informar al balanceador de carga, que instancias en el back-end pool estan en un estado adecuado para recibir una peticion, es decir cuando una 
+sonda falla en responder, el balanceador de carga detiene el flujo hacia las instancias que no pasaron la sonda. 
+
+## ¿Cuál es el propósito de la Load Balancing Rule? 
+
+El proposito de las reglas del balanceador de carga, es el de llevar su principal funcionalidad a cabo, con estas reglas se espesifica cuando se 
+cree una nueva instancia de acuerdo a cierto comportamiento del flujo de red, o de el performance de las maquinas etc. De esta forma poder distribuir la
+carga eficientemente entre las maquinas. 
+
+## ¿Qué tipos de sesión persistente existen, por qué esto es importante y cómo puede afectar la escalabilidad del sistema?.
+
+La persistencia de la sesion especifica que el trafico procedente de un cliente debe administrarse mediante la misma maquina virtual del back-end pool 
+durante todo una sesion 
+
+### Ninguna 
+
+Espesifica que las solicitudes sucesivas del mismo cliente pueden administrarse con cualquier maquina virtual. 
+
+### IP del cliente 
+
+Especifica que las solicitudes sucesivas de la misma direccion IP del cliente se administran con la misma maquina virtual 
+
+### IP y protocolo del cliente 
+
+Especifica que las solicitudes sucesivas de la misma combinacion de direccion IP y protocolo del cliente se administran mediante 
+la misma maquina virtual
+
+## ¿Qué es una Virtual Network? 
+
+Es el bloque de creacion fundamental de una red privada en azure, permite a muchos tipos de recursos, tal como una maquina virtual, comunicarse entre 
+usuarios, con redes locales e internet de forma segura. Es similar a una red tradicional pero le aporta las ventajas adicionales de la infraestructura cloud 
+como escalabilidad, disponibilidad y aislamiento. 
+
+## ¿Qué es una Subnet? 
+
+Una subnet es un segmento de una red virtual, nos permite segmentar la red virtual, delegando una porcion de el espacio de direcciones de la vnet a la subnet
+
+
+## ¿Para qué sirven los address space y address range?
+
+El espacio de direcciones son todas las direcciones disponibles que podran ser usadas para una red virtual, y el rango de direcciones indica cuantas direcciones 
+tenemos en ese espacio de direcciones, entonces dependiendo de la cantidad de recursos que se necesiten en la red virtual, el rango sera mayor o menor. 
+
+## ¿Qué son las Availability Zone y por qué seleccionamos 3 diferentes zonas?
+
+Son locaciones fisicas dentro de una region de Azure, cada una de estas cuenta con uno o mas centros de datos equipados de energia independiente, refrigeracion
+y red. Para asegruar resistencia, hay un minimo de tres zonas separadas en todas las regiones disponibles. la separacion de estas zonas disponibilidad es por 
+proteger a los centros de datos y aplicaciones dentro de estas zonas de fallos. La existencia de estas 3 zonas es para asegurar los recursos del cliente, ya que 
+si alguna falla, otra zona podra respaldarla. 
+
+## ¿Qué significa que una IP sea zone-redundant?
+
+Es una ip que esta replicada en varias zonas de disponibilidad. 
+
+## ¿Cuál es el propósito del Network Security Group?
+
+Un grupo de seguridad de red contiene reglas de seguridad que permiten o deniegan el tráfico de red entrante o el tráfico de red saliente de 
+varios tipos de recursos de Azure.
+
+
+
+
+
+
+
+
+
+
+
